@@ -34,6 +34,6 @@ extension CGPath {
         let curvedPath = CGMutablePath()
         curvedPath.move(to: startPoint)
         curvedPath.addCurve(to: endPoint, control1: CGPoint(x: c1X, y: c1Y), control2: CGPoint(x: c2X, y: c2Y))
-        return curvedPath;
+        return curvedPath.copy(dashingWithPhase: 0, lengths: [0, 10])
     }
 }

@@ -47,6 +47,7 @@ class DiagramView: UIView {
 
             self.layer.addSublayer(connectionLayer)
 
+
             adjust(connectionLayer: connectionLayer, fromNode: node, to: inputNode)
         }
 
@@ -63,7 +64,11 @@ class DiagramView: UIView {
         connectionLayer.path = CGPath.pathFrom(point: startPoint, to: targetPoint)
     }
 
+    var shouldUpdate = true
+
     @objc func refresh(displayLink: CADisplayLink) {
+        guard shouldUpdate else { return }
+        shouldUpdate = false
         for view in subviews {
             if let node = view as? NodeView, let parent = node.parent, let connectionLayer = parent.connectionLayer {
                 adjust(connectionLayer: connectionLayer, fromNode: node, to: parent)
@@ -81,6 +86,7 @@ class DiagramView: UIView {
             if currentViewScale * pinchScale < maxScale && currentViewScale * pinchScale > minScale {
                 currentViewScale *= pinchScale
                 transform = (transform.scaledBy(x: pinchScale, y: pinchScale))
+                shouldUpdate = true
             }
             recognizer.scale = 1.0
         }
@@ -92,5 +98,6 @@ class DiagramView: UIView {
         let translation = recognizer.translation(in: nodeView)
         nodeView.center = CGPoint(x: nodeView.center.x + translation.x, y: nodeView.center.y + translation.y)
         recognizer.setTranslation(.zero, in: nodeView)
+        shouldUpdate = true
     }
 }
