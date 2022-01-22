@@ -11,6 +11,10 @@ class NodeView: UIView {
         backgroundColor = .blue
     }
 
+    deinit {
+        print("node destroyed")
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

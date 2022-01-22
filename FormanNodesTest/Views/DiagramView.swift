@@ -12,6 +12,10 @@ class Connection: Hashable {
         self.connectionLayer = layer
     }
 
+    deinit {
+        print("Connection destroyed")
+    }
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -23,7 +27,6 @@ class Connection: Hashable {
 
 class DiagramView: UIView {
     private var currentViewScale: CGFloat = 1.0
-    private var displayLink: CADisplayLink?
 
     private var nodes: [NodeView] = []
 
@@ -34,18 +37,6 @@ class DiagramView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-
-        if newWindow != nil {
-            displayLink = CADisplayLink(target: self, selector: #selector(refresh(displayLink:)))
-            displayLink?.add(to: .main, forMode: .default)
-        } else {
-            displayLink?.invalidate()
-            displayLink = nil
-        }
     }
 
     func add(node: NodeView) {
@@ -100,21 +91,6 @@ class DiagramView: UIView {
         connectionLayer.path = CGPath.pathFrom(point: startPoint, to: targetPoint)
     }
 
-    var affectedNodes: [NodeView: Bool] = [:]
-
-    @objc func refresh(displayLink: CADisplayLink) {
-        let nodesToUpdate = affectedNodes
-        affectedNodes = [:]
-        var seenConnections: [Connection: Bool] = [:]
-        nodesToUpdate.keys.forEach { node in
-            node.connections.forEach { connection in
-                guard seenConnections[connection] == nil else { return }
-                seenConnections[connection] = true
-                adjust(connection: connection)
-            }
-        }
-    }
-
     @objc func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         let maxScale: CGFloat = 4.0
         let minScale: CGFloat = 1.0
@@ -137,14 +113,16 @@ class DiagramView: UIView {
         nodeView.center = CGPoint(x: nodeView.center.x + translation.x, y: nodeView.center.y + translation.y)
         recognizer.setTranslation(.zero, in: nodeView)
 
-        affectedNodes[nodeView] = true
+        nodeView.connections.forEach(adjust)
     }
 
     @objc func tapGestureHandler(_ recognizer: UITapGestureRecognizer){
-        print("on press")
         guard let nodeView = recognizer.view as? NodeView else { return }
 
         nodeView.removeFromSuperview()
+        nodes.removeAll { node in
+            node == nodeView
+        }
 
         guard !nodeView.connections.isEmpty else { return }
 
