@@ -1,8 +1,10 @@
 import UIKit
 
 class NodeView: UIView {
-    var connectionLayer: CAShapeLayer?
-    var parent: NodeView?
+    let id = UUID()
+
+    // TODO: Check for cycles
+    var connections: [Connection] = []
 
     init() {
         super.init(frame: .zero)
