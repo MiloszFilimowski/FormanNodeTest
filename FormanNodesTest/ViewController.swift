@@ -1,32 +1,25 @@
-//
-//  ViewController.swift
-//  FormanNodesTest
-//
-//  Created by Miłosz Filimowski on 21/01/2022.
-//
-
 import UIKit
 
-
 class ViewController: UIViewController {
-    let customView = DiagramView()
+    let diagramViewController = DiagramViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        customView.backgroundColor = .white
 
         let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNode))
 
         navigationItem.title = "TEST"
         navigationItem.rightBarButtonItem = navItem
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .red
+
+        view.addSubview(diagramViewController.view)
+        addChild(diagramViewController)
+        diagramViewController.didMove(toParent: self)
     }
 
     @objc func addNode() {
-        customView.add(node: NodeView())
-    }
-
-    override func loadView() {
-        view = customView
+        diagramViewController.add(node: NodeView())
     }
 }
 

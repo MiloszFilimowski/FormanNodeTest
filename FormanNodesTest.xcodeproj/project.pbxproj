@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		8E4449AE279B432D0033BD9D /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4449AD279B432D0033BD9D /* NodeView.swift */; };
-		8E4449B0279B435D0033BD9D /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4449AF279B435D0033BD9D /* DiagramView.swift */; };
+		8E4449B0279B435D0033BD9D /* DiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4449AF279B435D0033BD9D /* DiagramViewController.swift */; };
 		8E4449B3279B43D60033BD9D /* CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4449B2279B43D60033BD9D /* CGPath.swift */; };
 		8EABF8C9279B18490009053C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EABF8C8279B18490009053C /* AppDelegate.swift */; };
 		8EABF8CD279B18490009053C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EABF8CC279B18490009053C /* ViewController.swift */; };
 		8EABF8D2279B184B0009053C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EABF8D1279B184B0009053C /* Assets.xcassets */; };
 		8EABF8D5279B184B0009053C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EABF8D3279B184B0009053C /* LaunchScreen.storyboard */; };
+		8EE590E8279C847A007812BE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE590E7279C847A007812BE /* Connection.swift */; };
+		8EE590EC279C8A19007812BE /* DiagramScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE590EB279C8A19007812BE /* DiagramScrollViewDelegate.swift */; };
+		8EE590EE279C8D55007812BE /* CAShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE590ED279C8D55007812BE /* CAShapeLayer.swift */; };
+		8EE590F0279C8DF6007812BE /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE590EF279C8DF6007812BE /* DiagramView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E4449AD279B432D0033BD9D /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
-		8E4449AF279B435D0033BD9D /* DiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
+		8E4449AF279B435D0033BD9D /* DiagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramViewController.swift; sourceTree = "<group>"; };
 		8E4449B2279B43D60033BD9D /* CGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPath.swift; sourceTree = "<group>"; };
 		8EABF8C5279B18490009053C /* FormanNodesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormanNodesTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EABF8C8279B18490009053C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,10 @@
 		8EABF8D1279B184B0009053C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EABF8D4279B184B0009053C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EABF8D6279B184B0009053C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EE590E7279C847A007812BE /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		8EE590EB279C8A19007812BE /* DiagramScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramScrollViewDelegate.swift; sourceTree = "<group>"; };
+		8EE590ED279C8D55007812BE /* CAShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAShapeLayer.swift; sourceTree = "<group>"; };
+		8EE590EF279C8DF6007812BE /* DiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,19 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8E4449AC279B43190033BD9D /* Views */ = {
+		8E4449AC279B43190033BD9D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				8E4449AD279B432D0033BD9D /* NodeView.swift */,
-				8E4449AF279B435D0033BD9D /* DiagramView.swift */,
+				8E4449AF279B435D0033BD9D /* DiagramViewController.swift */,
+				8EE590EF279C8DF6007812BE /* DiagramView.swift */,
+				8EE590EB279C8A19007812BE /* DiagramScrollViewDelegate.swift */,
+				8EE590E7279C847A007812BE /* Connection.swift */,
 			);
-			path = Views;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		8E4449B1279B43C80033BD9D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8E4449B2279B43D60033BD9D /* CGPath.swift */,
+				8EE590ED279C8D55007812BE /* CAShapeLayer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -78,7 +90,7 @@
 				8E4449B1279B43C80033BD9D /* Extensions */,
 				8EABF8C8279B18490009053C /* AppDelegate.swift */,
 				8EABF8CC279B18490009053C /* ViewController.swift */,
-				8E4449AC279B43190033BD9D /* Views */,
+				8E4449AC279B43190033BD9D /* Classes */,
 				8EABF8D1279B184B0009053C /* Assets.xcassets */,
 				8EABF8D3279B184B0009053C /* LaunchScreen.storyboard */,
 				8EABF8D6279B184B0009053C /* Info.plist */,
@@ -156,11 +168,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E4449B0279B435D0033BD9D /* DiagramView.swift in Sources */,
+				8EE590F0279C8DF6007812BE /* DiagramView.swift in Sources */,
+				8E4449B0279B435D0033BD9D /* DiagramViewController.swift in Sources */,
+				8EE590E8279C847A007812BE /* Connection.swift in Sources */,
 				8EABF8CD279B18490009053C /* ViewController.swift in Sources */,
 				8E4449B3279B43D60033BD9D /* CGPath.swift in Sources */,
+				8EE590EC279C8A19007812BE /* DiagramScrollViewDelegate.swift in Sources */,
 				8EABF8C9279B18490009053C /* AppDelegate.swift in Sources */,
 				8E4449AE279B432D0033BD9D /* NodeView.swift in Sources */,
+				8EE590EE279C8D55007812BE /* CAShapeLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
